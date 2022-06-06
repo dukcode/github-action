@@ -6,13 +6,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@master
+
+
+    - name: ls -a via ssh
+      uses: fifsky/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
+        command: |
           pwd
-          whoami
+          ls -a
+        host: ${{ secrets.HOST }}
+        user: ubuntu
+        key: ${{ secrets.KEY}}
